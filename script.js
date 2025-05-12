@@ -1,4 +1,4 @@
-const image = document.getElementById('assets/images/background');
+const image = document.getElementById('bg-image');
 
 let scale = 1;
 let originX = 0;
