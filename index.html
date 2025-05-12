@@ -5,11 +5,36 @@
   <title>Zoom & Pan Background</title>
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
   <div id="container">
     <img id="bg-image" src="assets/images/background.png" alt="Background">
   </div>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+    .bubble {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100px; /* or whatever size you want */
+      height: auto;
+    }
 
-  <script src="zoom.js"></script>
+    .bubble.left {
+      left: 10%;
+    }
+
+    .bubble.right {
+      right: 10%;
+    }
+  </style>
+  <img src="assets/images/bubble.png" class="bubble left" alt="Bubble Left">
+  <img src="assets/images/bubble.png" class="bubble right" alt="Bubble Right">
 </body>
+
 </html>
