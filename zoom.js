@@ -7,8 +7,22 @@ let isPanning = false;
 let startX, startY;
 
 function updateTransform() {
+  const containerWidth = window.innerWidth;
+  const containerHeight = window.innerHeight;
+  const imageWidth = image.naturalWidth * scale;
+  const imageHeight = image.naturalHeight * scale;
+
+  // Compute min/max pan limits
+  const minX = Math.min(0, containerWidth - imageWidth);
+  const minY = Math.min(0, containerHeight - imageHeight);
+
+  // Clamp pan position so you don't see white space
+  originX = Math.min(Math.max(originX, minX), 0);
+  originY = Math.min(Math.max(originY, minY), 0);
+
   image.style.transform = `translate(${originX}px, ${originY}px) scale(${scale})`;
 }
+
 
 // Zoom with scroll wheel
 window.addEventListener('wheel', (e) => {
@@ -30,7 +44,7 @@ window.addEventListener('wheel', (e) => {
   }
 
   // Prevent scale from going too small or too big
-  scale = Math.min(Math.max(scale, 1), 10);
+  scale = Math.min(Math.max(scale, 1), 100);
 
   // Adjust origin to zoom toward mouse
   originX -= offsetX * (scale / prevScale - 1);
@@ -40,9 +54,7 @@ window.addEventListener('wheel', (e) => {
 }, { passive: false });
 
 // Shift + drag to pan
-window.addEventListener('mousedown', (e) => {
-  if (!e.shiftKey) return;
-
+window.addEventListener('mousedown', (e) => {z
   isPanning = true;
   startX = e.clientX - originX;
   startY = e.clientY - originY;
