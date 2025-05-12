@@ -30,7 +30,7 @@ window.addEventListener('wheel', (e) => {
   }
 
   // Prevent scale from going too small or too big
-  scale = Math.min(Math.max(scale, 0.1), 10);
+  scale = Math.min(Math.max(scale, 0.1), 1);
 
   // Adjust origin to zoom toward mouse
   originX -= offsetX * (scale / prevScale - 1);
