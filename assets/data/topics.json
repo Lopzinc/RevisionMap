@@ -1,0 +1,22 @@
+{
+    "Mathematics": {
+        "Further Maths": {
+            "some topic": {
+                "instructions": "do this and that",
+                "questions": "question"
+            }
+        },
+        "A-Level": {
+            "some topic": {
+                "instructions": "do this and that",
+                "questions": "question"
+            }
+        }
+    },
+    "Computer Science": {
+        "some topic": {
+            "instructions": "do this and that",
+            "questions": "question"
+        }
+    }
+}
