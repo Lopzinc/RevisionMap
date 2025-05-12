@@ -12,16 +12,26 @@ function updateTransform() {
   const imageWidth = image.naturalWidth * scale;
   const imageHeight = image.naturalHeight * scale;
 
-  // Compute min/max pan limits
-  const minX = Math.min(0, containerWidth - imageWidth);
-  const minY = Math.min(0, containerHeight - imageHeight);
+  // Calculate bounds for panning
+  let minX = containerWidth - imageWidth;
+  let minY = containerHeight - imageHeight;
 
-  // Clamp pan position so you don't see white space
-  originX = Math.min(Math.max(originX, minX), 0);
-  originY = Math.min(Math.max(originY, minY), 0);
+  // If image is smaller than container, center it (optional)
+  if (imageWidth <= containerWidth) {
+    originX = (containerWidth - imageWidth) / 2;
+  } else {
+    originX = Math.min(Math.max(originX, minX), 0);
+  }
+
+  if (imageHeight <= containerHeight) {
+    originY = (containerHeight - imageHeight) / 2;
+  } else {
+    originY = Math.min(Math.max(originY, minY), 0);
+  }
 
   image.style.transform = `translate(${originX}px, ${originY}px) scale(${scale})`;
 }
+
 
 
 // Zoom with scroll wheel
